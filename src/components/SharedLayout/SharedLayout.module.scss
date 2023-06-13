@@ -1,0 +1,17 @@
+.container {
+  padding-inline: 15px;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+}
+
+.nav {
+  display: flex;
+  gap: 20px;
+}
+
+.nav__item {
+  font-weight: var(--font-weight);
+}
