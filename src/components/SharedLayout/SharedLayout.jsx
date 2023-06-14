@@ -1,23 +1,38 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { Suspense } from "react";
 import scss from "./SharedLayout.module.scss";
+import clsx from "clsx";
 
 const SharedLayout = () => (
-  <div className={scss.container}>
+  <>
     <header className={scss.header}>
       <nav className={scss.nav}>
-        <NavLink to={"/goit-react-hw-05-movies/"} className={scss.nav__item}>
+        <NavLink
+          to="/goit-react-hw-05-movies/"
+          className={({ isActive }) =>
+            isActive ? clsx(scss.navItem, scss.isActive) : scss.navItem
+          }
+        >
           Home
         </NavLink>
-        <NavLink to={"movies"} className={scss.nav__item}>
+        <NavLink
+          to="movies"
+          className={({ isActive }) =>
+            isActive ? clsx(scss.navItem, scss.isActive) : scss.navItem
+          }
+        >
           Movies
         </NavLink>
       </nav>
     </header>
-    <Suspense fallback={<div>Loading page...</div>}>
-      <Outlet />
-    </Suspense>
-  </div>
+    <main>
+      <div className={scss.container}>
+        <Suspense fallback={<div>Loading page...</div>}>
+          <Outlet />
+        </Suspense>
+      </div>
+    </main>
+  </>
 );
 
 export default SharedLayout;

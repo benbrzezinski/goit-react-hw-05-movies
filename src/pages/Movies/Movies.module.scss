@@ -1,0 +1,31 @@
+.searchForm {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding-top: 5px;
+  padding-left: 20px;
+}
+
+.searchQuery {
+  width: 300px;
+  height: 31px;
+  padding-left: 8px;
+  padding-right: 8px;
+  border: none;
+  border-radius: var(--border-radius);
+}
+
+.searchBtn {
+  width: 70px;
+  font-weight: 500;
+  background-color: rgba(0 0 0 / 0.2);
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 6px;
+  transition: background-color var(--duration) var(--timing-function);
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--color-bg-third);
+  }
+}

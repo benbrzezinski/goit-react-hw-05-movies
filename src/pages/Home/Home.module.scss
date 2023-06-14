@@ -1,0 +1,25 @@
+.title {
+  font-size: 30px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.moviesList {
+  list-style-type: disclosure-closed;
+  padding-left: 30px;
+}
+
+.moviesItem {
+  margin-bottom: 4px;
+}
+
+.moviesTitle {
+  color: var(--color-text-third);
+  text-decoration: underline;
+  transition: color var(--duration) var(--timing-function);
+
+  &:hover,
+  &:focus-visible {
+    color: var(--color-bg-third);
+  }
+}
