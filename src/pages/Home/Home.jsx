@@ -16,7 +16,7 @@ const Home = () => {
         console.error(err.stack);
       }
     })();
-  }, []);
+  }, [setMovies]);
 
   return (
     <>
