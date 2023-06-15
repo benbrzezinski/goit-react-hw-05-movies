@@ -8,7 +8,21 @@ const getTrendingMovies = async () => {
     const resp = await axios.get(`${BASE_URL}/3/trending/movie/day`, {
       params: {
         api_key: KEY,
-        language: "en-US",
+      },
+    });
+
+    return await resp.data.results;
+  } catch (err) {
+    console.error(err.stack);
+  }
+};
+
+const getMovieByQuery = async query => {
+  try {
+    const resp = await axios.get(`${BASE_URL}/3/search/movie`, {
+      params: {
+        api_key: KEY,
+        query,
       },
     });
 
@@ -20,6 +34,7 @@ const getTrendingMovies = async () => {
 
 const Api = {
   getTrendingMovies,
+  getMovieByQuery,
 };
 
 export default Api;

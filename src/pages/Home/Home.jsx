@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import useMovies from "../../utils/hooks/useMovies";
 import Api from "../../utils/services/api";
 import scss from "./Home.module.scss";
 
 const Home = () => {
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useMovies();
 
   useEffect(() => {
     (async () => {

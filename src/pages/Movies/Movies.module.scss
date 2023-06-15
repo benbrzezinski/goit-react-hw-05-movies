@@ -3,7 +3,7 @@
   align-items: center;
   gap: 15px;
   padding-top: 5px;
-  padding-left: 20px;
+  margin-bottom: 15px;
 }
 
 .searchQuery {
@@ -18,7 +18,8 @@
 .searchBtn {
   width: 70px;
   font-weight: 500;
-  background-color: rgba(0 0 0 / 0.2);
+  color: var(--color-bg-sec);
+  background-color: var(--color-text-third);
   border: none;
   border-radius: var(--border-radius);
   padding: 6px;
@@ -27,5 +28,9 @@
   &:hover,
   &:focus-visible {
     background-color: var(--color-bg-third);
+  }
+
+  &:active {
+    transform: translateY(1px);
   }
 }
