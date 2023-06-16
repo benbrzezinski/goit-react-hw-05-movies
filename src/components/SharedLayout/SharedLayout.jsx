@@ -9,7 +9,7 @@ const SharedLayout = () => (
     <header className={scss.header}>
       <nav className={scss.nav}>
         <NavLink
-          to="/goit-react-hw-05-movies/"
+          to="/"
           className={({ isActive }) =>
             isActive ? clsx(scss.navItem, scss.isActive) : scss.navItem
           }

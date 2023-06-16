@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://benbrzezinski.github.io/goit-react-hw-05-movies/",
+  "homepage": "https://benbrzezinski.github.io/goit-react-hw-05-movies",
   "scripts": {
     "dev": "vite",
     "predeploy": "npm run build",
