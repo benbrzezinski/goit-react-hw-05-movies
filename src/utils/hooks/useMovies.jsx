@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-const useMovies = () => {
-  const [movies, setMovies] = useState([]);
+const useMovies = (initialState = []) => {
+  const [movies, setMovies] = useState(initialState);
   return [movies, setMovies];
 };
 

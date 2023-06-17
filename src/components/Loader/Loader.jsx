@@ -1,6 +1,7 @@
 import { Triangle } from "react-loader-spinner";
+import PropTypes from "prop-types";
 
-const Loader = () => (
+const Loader = ({ isLoading = true }) => (
   <Triangle
     height="100"
     width="100"
@@ -13,8 +14,12 @@ const Loader = () => (
       transform: "translate(-50%, -50%)",
       zIndex: "100",
     }}
-    visible={true}
+    visible={isLoading}
   />
 );
+
+Loader.propTypes = {
+  isLoading: PropTypes.bool,
+};
 
 export default Loader;

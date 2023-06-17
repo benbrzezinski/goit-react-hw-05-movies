@@ -1,19 +1,27 @@
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
+import { toast } from "react-toastify";
 import useMovies from "../../utils/hooks/useMovies";
+import useLoader from "../../utils/hooks/useLoader";
+import Loader from "../../components/Loader/Loader";
 import Api from "../../utils/services/api";
 import scss from "./Home.module.scss";
 
 const Home = () => {
   const [movies, setMovies] = useMovies();
+  const [isLoading, setIsLoading] = useLoader();
 
   useEffect(() => {
     (async () => {
       try {
+        setIsLoading(true);
         const movies = await Api.getTrendingMovies();
         setMovies(movies);
       } catch (err) {
         console.error(err.stack);
+        toast.error("Ups, something went wrong 🙁");
+      } finally {
+        setIsLoading(false);
       }
     })();
   }, [setMovies]);
@@ -30,6 +38,7 @@ const Home = () => {
           </li>
         ))}
       </ul>
+      <Loader isLoading={isLoading} />
     </>
   );
 };

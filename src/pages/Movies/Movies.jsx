@@ -1,25 +1,43 @@
+import { useSearchParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import useMovies from "../../utils/hooks/useMovies";
+import useLoader from "../../utils/hooks/useLoader";
+import Loader from "../../components/Loader/Loader";
 import Api from "../../utils/services/api";
 import scss from "./Movies.module.scss";
 import scssFromHome from "../Home/Home.module.scss";
 
 const Movies = () => {
   const [movies, setMovies] = useMovies();
+  const [isLoading, setIsLoading] = useLoader();
+  const [_, setSearchParams] = useSearchParams();
 
   const handleSubmit = async e => {
     try {
       e.preventDefault();
+      setIsLoading(true);
 
       const form = e.currentTarget;
       const query = form.elements.query.value;
 
-      const movies = await Api.getMovieByQuery(query.toLowerCase().trim());
-      setMovies(movies);
+      const moviesApi = await Api.getMovieByQuery(query.toLowerCase().trim());
 
-      form.reset();
+      if (!moviesApi.length) {
+        setMovies([]);
+        form.reset();
+        return toast.error("No movies found 🎥");
+      }
+
+      const params = query.trim() !== "" ? { query } : {};
+
+      setSearchParams(params);
+      setMovies(moviesApi);
     } catch (err) {
       console.error(err.stack);
+      toast.error("Ups, something went wrong 🙁");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -42,6 +60,7 @@ const Movies = () => {
           ))}
         </ul>
       )}
+      <Loader isLoading={isLoading} />
     </>
   );
 };
