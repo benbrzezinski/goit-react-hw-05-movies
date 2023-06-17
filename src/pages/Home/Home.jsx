@@ -24,7 +24,7 @@ const Home = () => {
         setIsLoading(false);
       }
     })();
-  }, [setMovies]);
+  }, [setMovies, setIsLoading]);
 
   return (
     <>

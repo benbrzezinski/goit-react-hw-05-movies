@@ -11,7 +11,7 @@ import scssFromHome from "../Home/Home.module.scss";
 const Movies = () => {
   const [movies, setMovies] = useMovies();
   const [isLoading, setIsLoading] = useLoader();
-  const [_, setSearchParams] = useSearchParams();
+  const [, setSearchParams] = useSearchParams();
 
   const handleSubmit = async e => {
     try {
