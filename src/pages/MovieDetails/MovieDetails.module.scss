@@ -1,0 +1,100 @@
+@use "src/utils/scss/mixins.scss" as *;
+
+.movie {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+
+  @include max-width(768px) {
+    flex-direction: column;
+  }
+}
+
+.movieImg {
+  width: 300px;
+  height: 450px;
+  border-radius: var(--border-radius);
+}
+
+.movieSection {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  padding-top: 10px;
+}
+
+.movieTitle {
+  font-size: 26px;
+  font-weight: var(--font-weight);
+  margin-bottom: 20px;
+}
+
+.movieScore {
+  margin-bottom: 20px;
+}
+
+.movieScoreText {
+  font-weight: 500;
+}
+
+.movieOverviewBox {
+  margin-bottom: 20px;
+}
+
+.movieOverview {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.movieOverviewText {
+  font-weight: 400;
+}
+
+.movieGenres {
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.movieGenresList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  list-style-type: circle;
+  padding-left: 30px;
+}
+
+.moreInfoBox {
+  border-top: 1px solid var(--color-text-third);
+  border-bottom: 1px solid var(--color-text-third);
+  padding-block: 15px;
+}
+
+.moreInfo {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.moreInfoList {
+  list-style-type: disclosure-closed;
+  padding-left: 30px;
+}
+
+.moreInfoItem:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+.moreInfoLink {
+  color: var(--color-text-third);
+  text-decoration: underline;
+  transition: color var(--duration) var(--timing-function);
+
+  &:hover,
+  &:focus-visible {
+    color: var(--color-bg-third);
+  }
+
+  &.isActive {
+    color: var(--color-bg-third);
+  }
+}

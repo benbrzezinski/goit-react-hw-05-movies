@@ -9,8 +9,8 @@
   padding-left: 30px;
 }
 
-.moviesItem {
-  margin-bottom: 4px;
+.moviesItem:not(:last-child) {
+  margin-bottom: 5px;
 }
 
 .moviesTitle {

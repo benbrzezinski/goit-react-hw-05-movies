@@ -1,5 +1,6 @@
 import { Triangle } from "react-loader-spinner";
 import PropTypes from "prop-types";
+import scss from "./Loader.module.scss";
 
 const Loader = ({ isLoading = true }) => (
   <Triangle
@@ -7,13 +8,7 @@ const Loader = ({ isLoading = true }) => (
     width="100"
     color="#dc143c"
     ariaLabel="triangle-loading"
-    wrapperStyle={{
-      position: "fixed",
-      top: "32%",
-      left: "50%",
-      transform: "translate(-50%, -50%)",
-      zIndex: "100",
-    }}
+    wrapperClass={scss.loaderWrapper}
     visible={isLoading}
   />
 );
