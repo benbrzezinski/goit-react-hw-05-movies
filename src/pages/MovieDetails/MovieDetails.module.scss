@@ -11,7 +11,6 @@
 }
 
 .movieImg {
-  flex: 0.7;
   width: 304px;
   height: 456px;
   background-color: rgba(0 0 0 / 0.2);
@@ -19,16 +18,15 @@
 }
 
 .noPhoto {
+  width: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex: 0.5;
 }
 
 .movieSection {
   display: flex;
   flex-direction: column;
-  flex: 2;
   max-width: 1200px;
   padding-top: 10px;
 }
