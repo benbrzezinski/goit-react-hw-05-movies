@@ -1,0 +1,40 @@
+.reviewsList {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding-top: 30px;
+}
+
+.reviewsItem {
+  max-width: 1000px;
+  border: 1px dashed var(--color-text-sec);
+  border-radius: var(--border-radius);
+  padding: 10px;
+}
+
+.reviewsName {
+  margin-bottom: 2px;
+}
+
+.reviewsNameText {
+  font-weight: 500;
+}
+
+.reviewsRating {
+  margin-bottom: 10px;
+}
+
+.reviewsRatingText {
+  font-weight: 500;
+}
+
+.reviewsDescription {
+  font-weight: 500;
+}
+
+.noReviews {
+  font-size: 20px;
+  font-weight: var(--font-weight);
+  padding-top: 20px;
+  padding-left: 10px;
+}
