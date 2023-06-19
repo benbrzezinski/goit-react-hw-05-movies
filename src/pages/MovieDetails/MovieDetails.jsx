@@ -1,7 +1,5 @@
-import { NavLink } from "react-router-dom";
-import { useState } from "react";
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams, Outlet } from "react-router-dom";
+import { useState, useEffect, Suspense } from "react";
 import { toast } from "react-toastify";
 import useLoader from "../../utils/hooks/useLoader";
 import Loader from "../../components/Loader/Loader";
@@ -11,13 +9,12 @@ import clsx from "clsx";
 
 const MovieDetails = () => {
   const [movieDetails, setMovieDetails] = useState([]);
-  const [isLoading, setIsLoading] = useLoader();
+  const [isLoading, setIsLoading] = useLoader(true);
   const { id } = useParams();
 
   useEffect(() => {
     (async () => {
       try {
-        setIsLoading(true);
         const movie = await Api.getMovieDetails(id);
         setMovieDetails([movie]);
       } catch (err) {
@@ -46,14 +43,12 @@ const MovieDetails = () => {
             {poster_path ? (
               <img
                 src={`https://image.tmdb.org/t/p/original${poster_path}`}
-                alt={tagline}
+                alt={tagline ? tagline : "Movie photo"}
                 className={scss.movieImg}
                 loading="lazy"
               />
             ) : (
-              <p style={{ display: "flex", alignItems: "center" }}>
-                No&nbsp;photo
-              </p>
+              <p className={scss.noPhoto}>No&nbsp;photo</p>
             )}
             <section className={scss.movieSection}>
               <h1 className={scss.movieTitle}>
@@ -85,35 +80,40 @@ const MovieDetails = () => {
           </div>
         )
       )}
-      <div className={scss.moreInfoBox}>
-        <p className={scss.moreInfo}>Additional information</p>
-        <ul className={scss.moreInfoList}>
-          <li className={scss.moreInfoItem}>
-            <NavLink
-              to="cast"
-              className={({ isActive }) =>
-                isActive
-                  ? clsx(scss.moreInfoLink, scss.isActive)
-                  : scss.moreInfoLink
-              }
-            >
-              Cast
-            </NavLink>
-          </li>
-          <li className={scss.moreInfoItem}>
-            <NavLink
-              to="reviews"
-              className={({ isActive }) =>
-                isActive
-                  ? clsx(scss.moreInfoLink, scss.isActive)
-                  : scss.moreInfoLink
-              }
-            >
-              Reviews
-            </NavLink>
-          </li>
-        </ul>
-      </div>
+      {!isLoading && (
+        <div className={scss.moreInfoBox}>
+          <p className={scss.moreInfo}>Additional information</p>
+          <ul className={scss.moreInfoList}>
+            <li className={scss.moreInfoItem}>
+              <NavLink
+                to="cast"
+                className={({ isActive }) =>
+                  isActive
+                    ? clsx(scss.moreInfoLink, scss.isActive)
+                    : scss.moreInfoLink
+                }
+              >
+                Cast
+              </NavLink>
+            </li>
+            <li className={scss.moreInfoItem}>
+              <NavLink
+                to="reviews"
+                className={({ isActive }) =>
+                  isActive
+                    ? clsx(scss.moreInfoLink, scss.isActive)
+                    : scss.moreInfoLink
+                }
+              >
+                Reviews
+              </NavLink>
+            </li>
+          </ul>
+        </div>
+      )}
+      <Suspense fallback={<Loader />}>
+        <Outlet />
+      </Suspense>
       <Loader isLoading={isLoading} />
     </>
   );

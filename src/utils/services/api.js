@@ -46,10 +46,25 @@ const getMovieDetails = async id => {
   }
 };
 
+const getMovieCredits = async id => {
+  try {
+    const resp = await axios.get(`${BASE_URL}/movie/${id}/credits`, {
+      params: {
+        api_key: KEY,
+      },
+    });
+
+    return await resp.data;
+  } catch (err) {
+    console.error(err.stack);
+  }
+};
+
 const Api = {
   getTrendingMovies,
   getMovieByQuery,
   getMovieDetails,
+  getMovieCredits,
 };
 
 export default Api;

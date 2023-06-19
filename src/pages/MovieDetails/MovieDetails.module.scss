@@ -11,14 +11,24 @@
 }
 
 .movieImg {
-  width: 300px;
-  height: 450px;
+  flex: 0.7;
+  width: 304px;
+  height: 456px;
+  background-color: rgba(0 0 0 / 0.2);
   border-radius: var(--border-radius);
+}
+
+.noPhoto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0.5;
 }
 
 .movieSection {
   display: flex;
   flex-direction: column;
+  flex: 2;
   max-width: 1200px;
   padding-top: 10px;
 }
@@ -65,8 +75,8 @@
 }
 
 .moreInfoBox {
-  border-top: 1px solid var(--color-text-third);
-  border-bottom: 1px solid var(--color-text-third);
+  border-top: 1px solid var(--color-text-sec);
+  border-bottom: 1px solid var(--color-text-sec);
   padding-block: 15px;
 }
 
@@ -85,7 +95,7 @@
 }
 
 .moreInfoLink {
-  color: var(--color-text-third);
+  color: var(--color-text-sec);
   text-decoration: underline;
   transition: color var(--duration) var(--timing-function);
 

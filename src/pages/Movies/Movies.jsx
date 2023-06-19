@@ -1,5 +1,4 @@
-import { useSearchParams } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import useMovies from "../../utils/hooks/useMovies";
 import useLoader from "../../utils/hooks/useLoader";
