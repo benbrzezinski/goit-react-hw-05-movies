@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
 import useMovies from "../../utils/hooks/useMovies";
@@ -10,6 +10,7 @@ import scss from "./Home.module.scss";
 const Home = () => {
   const [movies, setMovies] = useMovies();
   const [isLoading, setIsLoading] = useLoader();
+  const location = useLocation();
 
   useEffect(() => {
     (async () => {
@@ -32,7 +33,11 @@ const Home = () => {
       <ul className={scss.moviesList}>
         {movies.map(({ id, title }) => (
           <li className={scss.moviesItem} key={id}>
-            <Link to={`movies/${id}`} className={scss.moviesTitle}>
+            <Link
+              to={`movies/${id}`}
+              state={{ from: location }}
+              className={scss.moviesTitle}
+            >
               {title}
             </Link>
           </li>

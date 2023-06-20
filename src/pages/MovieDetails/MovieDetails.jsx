@@ -1,5 +1,11 @@
-import { NavLink, useParams, Outlet } from "react-router-dom";
-import { useState, useEffect, Suspense } from "react";
+import {
+  NavLink,
+  Link,
+  Outlet,
+  useParams,
+  useLocation,
+} from "react-router-dom";
+import { useState, useEffect, useRef, Suspense } from "react";
 import { toast } from "react-toastify";
 import useLoader from "../../utils/hooks/useLoader";
 import Loader from "../../components/Loader/Loader";
@@ -11,6 +17,8 @@ const MovieDetails = () => {
   const [movieDetails, setMovieDetails] = useState([]);
   const [isLoading, setIsLoading] = useLoader(true);
   const { id } = useParams();
+  const location = useLocation();
+  const backLink = useRef(location.state?.from ?? "/");
 
   useEffect(() => {
     (async () => {
@@ -28,6 +36,15 @@ const MovieDetails = () => {
 
   return (
     <>
+      {!isLoading && (
+        <div className={scss.backBtnBox}>
+          <button type="button" className={scss.backBtn}>
+            <Link to={backLink.current} className={scss.backLink}>
+              Go back
+            </Link>
+          </button>
+        </div>
+      )}
       {movieDetails.map(
         ({
           id,

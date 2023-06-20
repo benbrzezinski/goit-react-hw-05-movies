@@ -1,4 +1,5 @@
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import { toast } from "react-toastify";
 import useMovies from "../../utils/hooks/useMovies";
 import useLoader from "../../utils/hooks/useLoader";
@@ -10,7 +11,24 @@ import scssFromHome from "../Home/Home.module.scss";
 const Movies = () => {
   const [movies, setMovies] = useMovies();
   const [isLoading, setIsLoading] = useLoader();
-  const [, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const queryParam = searchParams.get("query") ?? "";
+  const location = useLocation();
+
+  useEffect(() => {
+    (async () => {
+      try {
+        setIsLoading(true);
+        const moviesApi = await Api.getMovieByQuery(queryParam);
+        setMovies(moviesApi);
+      } catch (err) {
+        console.error(err.stack);
+        toast.error("Ups, something went wrong 🙁");
+      } finally {
+        setIsLoading(false);
+      }
+    })();
+  }, [setIsLoading, queryParam, setMovies]);
 
   const handleSubmit = async e => {
     try {
@@ -23,15 +41,15 @@ const Movies = () => {
       const moviesApi = await Api.getMovieByQuery(query.toLowerCase().trim());
 
       if (!moviesApi.length) {
+        setSearchParams({});
         setMovies([]);
         form.reset();
         return toast.error("No movies found 🎥");
       }
 
-      const params = query.trim() !== "" ? { query } : {};
-
-      setSearchParams(params);
+      setSearchParams({ query: query.toLowerCase().trim() });
       setMovies(moviesApi);
+      form.reset();
     } catch (err) {
       console.error(err.stack);
       toast.error("Ups, something went wrong 🙁");
@@ -52,7 +70,11 @@ const Movies = () => {
         <ul className={scssFromHome.moviesList}>
           {movies.map(({ id, title }) => (
             <li className={scssFromHome.moviesItem} key={id}>
-              <Link to={`${id}`} className={scssFromHome.moviesTitle}>
+              <Link
+                to={`${id}`}
+                state={{ from: location }}
+                className={scssFromHome.moviesTitle}
+              >
                 {title}
               </Link>
             </li>
