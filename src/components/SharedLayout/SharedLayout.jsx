@@ -13,7 +13,7 @@ const SharedLayout = () => (
         <NavLink
           to="/"
           className={({ isActive }) =>
-            isActive ? clsx(scss.navItem, scss.isActive) : scss.navItem
+            clsx(scss.navItem, isActive && scss.isActive)
           }
         >
           Home
@@ -21,7 +21,7 @@ const SharedLayout = () => (
         <NavLink
           to="movies"
           className={({ isActive }) =>
-            isActive ? clsx(scss.navItem, scss.isActive) : scss.navItem
+            clsx(scss.navItem, isActive && scss.isActive)
           }
         >
           Movies

@@ -105,9 +105,7 @@ const MovieDetails = () => {
               <NavLink
                 to="cast"
                 className={({ isActive }) =>
-                  isActive
-                    ? clsx(scss.moreInfoLink, scss.isActive)
-                    : scss.moreInfoLink
+                  clsx(scss.moreInfoLink, isActive && scss.isActive)
                 }
               >
                 Cast
@@ -117,9 +115,7 @@ const MovieDetails = () => {
               <NavLink
                 to="reviews"
                 className={({ isActive }) =>
-                  isActive
-                    ? clsx(scss.moreInfoLink, scss.isActive)
-                    : scss.moreInfoLink
+                  clsx(scss.moreInfoLink, isActive && scss.isActive)
                 }
               >
                 Reviews

@@ -28,7 +28,7 @@ const Home = () => {
   }, [setMovies, setIsLoading]);
 
   return (
-    <>
+    <section>
       <h1 className={scss.title}>Trending today</h1>
       <ul className={scss.moviesList}>
         {movies.map(({ id, title }) => (
@@ -44,7 +44,7 @@ const Home = () => {
         ))}
       </ul>
       <Loader isLoading={isLoading} />
-    </>
+    </section>
   );
 };
 
