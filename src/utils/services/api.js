@@ -1,11 +1,11 @@
 import axios from "axios";
 
-const BASE_URL = "https://api.themoviedb.org/3";
+axios.defaults.baseURL = "https://api.themoviedb.org/3";
 const KEY = "82c211a0cb754dbef32a794b59444890";
 
 const getTrendingMovies = async () => {
   try {
-    const resp = await axios.get(`${BASE_URL}/trending/movie/day`, {
+    const resp = await axios.get("/trending/movie/day", {
       params: {
         api_key: KEY,
       },
@@ -19,7 +19,7 @@ const getTrendingMovies = async () => {
 
 const getMovieByQuery = async query => {
   try {
-    const resp = await axios.get(`${BASE_URL}/search/movie`, {
+    const resp = await axios.get("/search/movie", {
       params: {
         api_key: KEY,
         query,
@@ -34,7 +34,7 @@ const getMovieByQuery = async query => {
 
 const getMovieDetails = async id => {
   try {
-    const resp = await axios.get(`${BASE_URL}/movie/${id}`, {
+    const resp = await axios.get(`/movie/${id}`, {
       params: {
         api_key: KEY,
       },
@@ -48,7 +48,7 @@ const getMovieDetails = async id => {
 
 const getMovieCredits = async id => {
   try {
-    const resp = await axios.get(`${BASE_URL}/movie/${id}/credits`, {
+    const resp = await axios.get(`/movie/${id}/credits`, {
       params: {
         api_key: KEY,
       },
@@ -62,7 +62,7 @@ const getMovieCredits = async id => {
 
 const getMovieReviews = async id => {
   try {
-    const resp = await axios.get(`${BASE_URL}/movie/${id}/reviews`, {
+    const resp = await axios.get(`/movie/${id}/reviews`, {
       params: {
         api_key: KEY,
       },
