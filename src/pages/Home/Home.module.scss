@@ -1,3 +1,5 @@
+@use "../../utils//scss/placeholders/movies.scss" as *;
+
 .title {
   font-size: 30px;
   font-weight: 500;
@@ -5,21 +7,13 @@
 }
 
 .moviesList {
-  list-style-type: disclosure-closed;
-  padding-left: 30px;
+  @extend %moviesList;
 }
 
 .moviesItem:not(:last-child) {
-  margin-bottom: 5px;
+  @extend %moviesItem;
 }
 
 .moviesTitle {
-  color: var(--color-text-sec);
-  text-decoration: underline;
-  transition: color var(--duration) var(--timing-function);
-
-  &:hover,
-  &:focus-visible {
-    color: var(--color-bg-third);
-  }
+  @extend %moviesTitle;
 }

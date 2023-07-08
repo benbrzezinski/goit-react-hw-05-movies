@@ -1,0 +1,19 @@
+%moviesList {
+  list-style-type: disclosure-closed;
+  padding-left: 30px;
+}
+
+%moviesItem {
+  margin-bottom: 5px;
+}
+
+%moviesTitle {
+  color: var(--color-text-sec);
+  text-decoration: underline;
+  transition: color var(--duration) var(--timing-function);
+
+  &:hover,
+  &:focus-visible {
+    color: var(--color-bg-third);
+  }
+}

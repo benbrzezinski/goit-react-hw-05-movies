@@ -6,7 +6,6 @@ import useLoader from "../../utils/hooks/useLoader";
 import Loader from "../../components/Loader/Loader";
 import Api from "../../utils/services/api";
 import scss from "./Movies.module.scss";
-import scssFromHome from "../Home/Home.module.scss";
 
 const Movies = () => {
   const [movies, setMovies] = useMovies();
@@ -61,19 +60,19 @@ const Movies = () => {
   return (
     <>
       <form className={scss.searchForm} onSubmit={handleSubmit}>
-        <input type="text" className={scss.searchQuery} name="query" required />
-        <button type="submit" className={scss.searchBtn}>
+        <input className={scss.searchQuery} type="text" name="query" required />
+        <button className={scss.searchBtn} type="submit">
           Search
         </button>
       </form>
       {movies.length > 0 && (
-        <ul className={scssFromHome.moviesList}>
+        <ul className={scss.moviesList}>
           {movies.map(({ id, title }) => (
-            <li className={scssFromHome.moviesItem} key={id}>
+            <li className={scss.moviesItem} key={id}>
               <Link
                 to={`${id}`}
                 state={{ from: location }}
-                className={scssFromHome.moviesTitle}
+                className={scss.moviesTitle}
               >
                 {title}
               </Link>

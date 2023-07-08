@@ -1,3 +1,5 @@
+@use "../../utils//scss/placeholders/movies.scss" as *;
+
 .searchForm {
   display: flex;
   align-items: center;
@@ -33,4 +35,16 @@
   &:active {
     transform: translateY(2px);
   }
+}
+
+.moviesList {
+  @extend %moviesList;
+}
+
+.moviesItem:not(:last-child) {
+  @extend %moviesItem;
+}
+
+.moviesTitle {
+  @extend %moviesTitle;
 }
