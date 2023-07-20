@@ -17,8 +17,8 @@ const Cast = () => {
         const castApi = await Api.getMovieCredits(id);
         setCast(castApi.cast);
       } catch (err) {
-        console.error(err.stack);
-        toast.error("Ups, something went wrong 🙁");
+        console.error(err.message);
+        toast.error("Oops, something went wrong");
       } finally {
         setIsLoading(false);
       }

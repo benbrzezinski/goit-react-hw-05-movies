@@ -1,5 +1,6 @@
 import { Link, useSearchParams, useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import { toast } from "react-toastify";
 import useMovies from "../../utils/hooks/useMovies";
 import useLoader from "../../utils/hooks/useLoader";
@@ -21,8 +22,8 @@ const Movies = () => {
         const moviesApi = await Api.getMovieByQuery(queryParam);
         setMovies(moviesApi);
       } catch (err) {
-        console.error(err.stack);
-        toast.error("Ups, something went wrong 🙁");
+        console.error(err.message);
+        toast.error("Oops, something went wrong");
       } finally {
         setIsLoading(false);
       }
@@ -50,8 +51,8 @@ const Movies = () => {
       setMovies(moviesApi);
       form.reset();
     } catch (err) {
-      console.error(err.stack);
-      toast.error("Ups, something went wrong 🙁");
+      console.error(err.message);
+      toast.error("Oops, something went wrong");
     } finally {
       setIsLoading(false);
     }
@@ -59,6 +60,9 @@ const Movies = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Movies - Search</title>
+      </Helmet>
       <form className={scss.searchForm} onSubmit={handleSubmit}>
         <input className={scss.searchQuery} type="text" name="query" required />
         <button className={scss.searchBtn} type="submit">

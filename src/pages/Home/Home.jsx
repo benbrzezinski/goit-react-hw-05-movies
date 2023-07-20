@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import { toast } from "react-toastify";
 import useMovies from "../../utils/hooks/useMovies";
 import useLoader from "../../utils/hooks/useLoader";
@@ -19,8 +20,8 @@ const Home = () => {
         const movies = await Api.getTrendingMovies();
         setMovies(movies);
       } catch (err) {
-        console.error(err.stack);
-        toast.error("Ups, something went wrong 🙁");
+        console.error(err.message);
+        toast.error("Oops, something went wrong");
       } finally {
         setIsLoading(false);
       }
@@ -28,23 +29,28 @@ const Home = () => {
   }, [setMovies, setIsLoading]);
 
   return (
-    <section>
-      <h1 className={scss.title}>Trending today</h1>
-      <ul className={scss.moviesList}>
-        {movies.map(({ id, title }) => (
-          <li className={scss.moviesItem} key={id}>
-            <Link
-              to={`movies/${id}`}
-              state={{ from: location }}
-              className={scss.moviesTitle}
-            >
-              {title}
-            </Link>
-          </li>
-        ))}
-      </ul>
-      <Loader isLoading={isLoading} />
-    </section>
+    <>
+      <Helmet>
+        <title>Movies</title>
+      </Helmet>
+      <section>
+        <h1 className={scss.title}>Trending today</h1>
+        <ul className={scss.moviesList}>
+          {movies.map(({ id, title }) => (
+            <li className={scss.moviesItem} key={id}>
+              <Link
+                to={`movies/${id}`}
+                state={{ from: location }}
+                className={scss.moviesTitle}
+              >
+                {title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <Loader isLoading={isLoading} />
+      </section>
+    </>
   );
 };
 

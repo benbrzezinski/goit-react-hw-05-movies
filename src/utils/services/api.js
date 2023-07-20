@@ -13,7 +13,7 @@ const getTrendingMovies = async () => {
 
     return await resp.data.results;
   } catch (err) {
-    console.error(err.stack);
+    console.error(err.message);
   }
 };
 
@@ -28,7 +28,7 @@ const getMovieByQuery = async query => {
 
     return await resp.data.results;
   } catch (err) {
-    console.error(err.stack);
+    console.error(err.message);
   }
 };
 
@@ -42,7 +42,7 @@ const getMovieDetails = async id => {
 
     return await resp.data;
   } catch (err) {
-    console.error(err.stack);
+    console.error(err.message);
   }
 };
 
@@ -56,7 +56,7 @@ const getMovieCredits = async id => {
 
     return await resp.data;
   } catch (err) {
-    console.error(err.stack);
+    console.error(err.message);
   }
 };
 
@@ -70,7 +70,7 @@ const getMovieReviews = async id => {
 
     return await resp.data.results;
   } catch (err) {
-    console.error(err.stack);
+    console.error(err.message);
   }
 };
 

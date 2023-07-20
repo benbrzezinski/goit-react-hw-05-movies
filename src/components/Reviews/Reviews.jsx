@@ -17,8 +17,8 @@ const Reviews = () => {
         const reviewsApi = await Api.getMovieReviews(id);
         setReviews(reviewsApi);
       } catch (err) {
-        console.error(err.stack);
-        toast.error("Ups, something went wrong 🙁");
+        console.error(err.message);
+        toast.error("Oops, something went wrong");
       } finally {
         setIsLoading(false);
       }

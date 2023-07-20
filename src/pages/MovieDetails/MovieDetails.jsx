@@ -6,6 +6,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import { useState, useEffect, useRef, Suspense } from "react";
+import { Helmet } from "react-helmet-async";
 import { toast } from "react-toastify";
 import useLoader from "../../utils/hooks/useLoader";
 import Loader from "../../components/Loader/Loader";
@@ -26,8 +27,8 @@ const MovieDetails = () => {
         const movie = await Api.getMovieDetails(id);
         setMovieDetails([movie]);
       } catch (err) {
-        console.error(err.stack);
-        toast.error("Ups, something went wrong 🙁");
+        console.error(err.message);
+        toast.error("Oops, something went wrong");
       } finally {
         setIsLoading(false);
       }
@@ -36,6 +37,9 @@ const MovieDetails = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Movies - Details</title>
+      </Helmet>
       {!isLoading && (
         <div className={scss.backBtnBox}>
           <button type="button" className={scss.backBtn}>
