@@ -48,7 +48,10 @@
 .noPhoto {
   font-size: 20px;
   font-weight: var(--font-weight);
-  width: 200px;
+  width: 300px;
+  height: 450px;
+  background-color: rgba(0 0 0 / 0.1);
+  border-radius: var(--border-radius);
   display: flex;
   justify-content: center;
   align-items: center;

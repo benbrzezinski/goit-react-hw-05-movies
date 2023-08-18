@@ -36,14 +36,23 @@ const Home = () => {
       <section>
         <h1 className={scss.title}>Trending today</h1>
         <ul className={scss.moviesList}>
-          {movies.map(({ id, title }) => (
+          {movies.map(({ id, poster_path, tagline }) => (
             <li className={scss.moviesItem} key={id}>
               <Link
                 to={`movies/${id}`}
                 state={{ from: location }}
-                className={scss.moviesTitle}
+                className={scss.moviesLink}
               >
-                {title}
+                {poster_path ? (
+                  <img
+                    src={`https://image.tmdb.org/t/p/original${poster_path}`}
+                    alt={tagline ? tagline : "Movie photo"}
+                    className={scss.moviesImg}
+                    loading="lazy"
+                  />
+                ) : (
+                  <p className={scss.noPhoto}>No&nbsp;photo</p>
+                )}
               </Link>
             </li>
           ))}

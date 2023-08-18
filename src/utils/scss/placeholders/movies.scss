@@ -1,15 +1,31 @@
 %moviesList {
-  list-style-type: disclosure-closed;
-  padding-left: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
 }
 
 %moviesItem {
-  margin-bottom: 5px;
+  transition: transform var(--duration) var(--timing-function);
+
+  &:hover,
+  &:focus-visible {
+    transform: scale(1.04);
+  }
 }
 
-%moviesTitle {
+%moviesImg {
+  width: 300px;
+  height: 450px;
+  background-color: rgba(0 0 0 / 0.1);
+  border-radius: var(--border-radius);
+}
+
+%moviesLink {
   color: var(--color-text-sec);
-  text-decoration: underline;
+  font-size: 24px;
+  text-align: center;
   transition: color var(--duration) var(--timing-function);
 
   &:hover,

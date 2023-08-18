@@ -2,10 +2,11 @@
 
 .searchForm {
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 15px;
   padding-top: 5px;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
 }
 
 .searchQuery {
@@ -41,10 +42,26 @@
   @extend %moviesList;
 }
 
-.moviesItem:not(:last-child) {
+.moviesItem {
   @extend %moviesItem;
 }
 
-.moviesTitle {
-  @extend %moviesTitle;
+.moviesImg {
+  @extend %moviesImg;
+}
+
+.noPhoto {
+  font-size: 20px;
+  font-weight: var(--font-weight);
+  width: 300px;
+  height: 450px;
+  background-color: rgba(0 0 0 / 0.1);
+  border-radius: var(--border-radius);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.moviesLink {
+  @extend %moviesLink;
 }
