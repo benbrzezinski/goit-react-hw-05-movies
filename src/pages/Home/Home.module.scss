@@ -1,7 +1,7 @@
 @use "../../utils//scss/placeholders/movies.scss" as *;
 
 .title {
-  font-size: 32px;
+  font-size: 40px;
   font-weight: 500;
   text-transform: capitalize;
   text-align: center;
@@ -21,6 +21,7 @@
 }
 
 .noPhoto {
+  color: #8e0c26;
   font-size: 20px;
   font-weight: var(--font-weight);
   width: 300px;
@@ -34,4 +35,16 @@
 
 .moviesLink {
   @extend %moviesLink;
+}
+
+.movieInfo {
+  @extend %movieInfo;
+}
+
+.movieTitle {
+  @extend %movieTitle;
+}
+
+.movieRating {
+  @extend %movieRating;
 }

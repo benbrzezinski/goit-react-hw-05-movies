@@ -16,12 +16,13 @@
   padding-right: 8px;
   border: none;
   border-radius: var(--border-radius);
+  background-color: #e2e2e2;
 }
 
 .searchBtn {
   width: 80px;
   font-weight: 500;
-  color: var(--color-bg-sec);
+  color: var(--color-text-main);
   background-color: var(--color-text-sec);
   border: none;
   border-radius: var(--border-radius);
@@ -51,6 +52,7 @@
 }
 
 .noPhoto {
+  color: #8e0c26;
   font-size: 20px;
   font-weight: var(--font-weight);
   width: 300px;
@@ -64,4 +66,16 @@
 
 .moviesLink {
   @extend %moviesLink;
+}
+
+.movieInfo {
+  @extend %movieInfo;
+}
+
+.movieTitle {
+  @extend %movieTitle;
+}
+
+.movieRating {
+  @extend %movieRating;
 }
