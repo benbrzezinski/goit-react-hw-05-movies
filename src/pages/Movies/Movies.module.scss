@@ -1,5 +1,13 @@
 @use "../../utils//scss/placeholders/movies.scss" as *;
 
+.title {
+  font-size: 36px;
+  font-weight: 500;
+  text-transform: capitalize;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
 .searchForm {
   display: flex;
   justify-content: center;
@@ -35,6 +43,7 @@
   }
 
   &:active {
+    background-color: var(--color-bg-third);
     transform: translateY(2px);
   }
 }
@@ -52,9 +61,10 @@
 }
 
 .noPhoto {
-  color: #8e0c26;
+  color: var(--color-text-active);
   font-size: 20px;
   font-weight: var(--font-weight);
+  text-transform: capitalize;
   width: 300px;
   height: 450px;
   background-color: rgba(0 0 0 / 0.1);

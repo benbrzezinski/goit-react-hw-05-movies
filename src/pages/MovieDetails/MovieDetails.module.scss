@@ -46,8 +46,11 @@
 }
 
 .noPhoto {
+  color: var(--color-text-active);
   font-size: 20px;
   font-weight: var(--font-weight);
+  text-transform: capitalize;
+  max-width: 300px;
   min-width: 300px;
   height: 450px;
   background-color: rgba(0 0 0 / 0.1);
@@ -132,10 +135,10 @@
 
   &:hover,
   &:focus-visible {
-    color: var(--color-bg-third);
+    color: var(--color-text-active);
   }
 
   &.isActive {
-    color: var(--color-bg-third);
+    color: var(--color-text-active);
   }
 }

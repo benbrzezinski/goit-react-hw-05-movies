@@ -1,13 +1,14 @@
-import { Triangle } from "react-loader-spinner";
+import { TailSpin } from "react-loader-spinner";
 import PropTypes from "prop-types";
 import scss from "./Loader.module.scss";
 
 const Loader = ({ isLoading = true }) => (
-  <Triangle
+  <TailSpin
     height="100"
     width="100"
-    color="#dc143c"
-    ariaLabel="triangle-loading"
+    color="#a80f2e"
+    ariaLabel="tail-spin-loading"
+    radius="1"
     wrapperClass={scss.loaderWrapper}
     visible={isLoading}
   />

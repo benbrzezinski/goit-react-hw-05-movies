@@ -1,5 +1,6 @@
 .loaderWrapper {
   position: fixed;
+  pointer-events: none;
   top: 32%;
   left: 50%;
   transform: translate(-50%, -50%);

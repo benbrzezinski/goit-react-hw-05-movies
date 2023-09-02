@@ -65,49 +65,57 @@ const Movies = () => {
       <Helmet>
         <title>Movies - Search</title>
       </Helmet>
-      <form className={scss.searchForm} onSubmit={handleSubmit}>
-        <input className={scss.searchQuery} type="text" name="query" required />
-        <button className={scss.searchBtn} type="submit">
-          Search
-        </button>
-      </form>
-      {movies.length > 0 && (
-        <ul className={scss.moviesList}>
-          {movies.map(({ id, poster_path, tagline, title, vote_average }) => (
-            <li
-              className={scss.moviesItem}
-              key={id}
-              onMouseEnter={() => showCard(id)}
-              onMouseLeave={hideCard}
-            >
-              <Link
-                to={`${id}`}
-                state={{ from: location }}
-                className={scss.moviesLink}
+      <section>
+        <h1 className={scss.title}>Search for movies</h1>
+        <form className={scss.searchForm} onSubmit={handleSubmit}>
+          <input
+            className={scss.searchQuery}
+            type="text"
+            name="query"
+            required
+          />
+          <button className={scss.searchBtn} type="submit">
+            Search
+          </button>
+        </form>
+        {movies.length > 0 && (
+          <ul className={scss.moviesList}>
+            {movies.map(({ id, poster_path, tagline, title, vote_average }) => (
+              <li
+                className={scss.moviesItem}
+                key={id}
+                onMouseEnter={() => showCard(id)}
+                onMouseLeave={hideCard}
               >
-                {poster_path ? (
-                  <img
-                    src={`https://image.tmdb.org/t/p/original${poster_path}`}
-                    alt={tagline ? tagline : "Movie photo"}
-                    className={scss.moviesImg}
-                    loading="lazy"
-                  />
-                ) : (
-                  <p className={scss.noPhoto}>No&nbsp;photo</p>
-                )}
-                {hoveredMovie === id && (
-                  <div className={scss.movieInfo}>
-                    <p className={scss.movieTitle}>{title}</p>
-                    <p className={scss.movieRating}>
-                      {vote_average.toFixed(1)} &#9733;
-                    </p>
-                  </div>
-                )}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
+                <Link
+                  to={`${id}`}
+                  state={{ from: location }}
+                  className={scss.moviesLink}
+                >
+                  {poster_path ? (
+                    <img
+                      src={`https://image.tmdb.org/t/p/original${poster_path}`}
+                      alt={tagline ? tagline : "Movie photo"}
+                      className={scss.moviesImg}
+                      loading="lazy"
+                    />
+                  ) : (
+                    <p className={scss.noPhoto}>No&nbsp;photo</p>
+                  )}
+                  {hoveredMovie === id && (
+                    <div className={scss.movieInfo}>
+                      <p className={scss.movieTitle}>{title}</p>
+                      <p className={scss.movieRating}>
+                        {vote_average.toFixed(1)} &#9733;
+                      </p>
+                    </div>
+                  )}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
       <Loader isLoading={isLoading} />
     </>
   );
